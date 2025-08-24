@@ -18,7 +18,7 @@ public class MusicPlayer extends JFrame {
     public MusicPlayer() {
         audioPlayer=new AudioPlayer();
         initializeGUI();
-        setupEventListner();
+        setupEventListener();
         startProgressTimer();
     }
 
@@ -121,7 +121,7 @@ public class MusicPlayer extends JFrame {
             @Override
             public void actionPerformed (ActionEvent e) {
                 audioPlayer.pause();
-                updateButtonState();
+                updateButtonStates();
             }
         });
 
@@ -130,7 +130,7 @@ public class MusicPlayer extends JFrame {
             public void actionPerformed (ActionEvent e) {
                 audioPlayer.stop();
                 progressSlider.setValue(0);
-                updateButtonState();
+                updateButtonStates();
             }
         });
 
@@ -142,7 +142,7 @@ public class MusicPlayer extends JFrame {
         progressSlider.addChangeListener(e -> {
             if (progressSlider.getValueIsAdjusting()) {
                 long totalDuration = audioPlayer.getTotalDuration();
-                long newPosition = (long) ((progressSlider.getValue) / 100.0) * totalDuration);
+                long newPosition = (long) ((progressSlider.getValue() / 100.0) * totalDuration);
                 audioPlayer.setPosition(newPosition);
             }
         });
